@@ -1,0 +1,19 @@
+<form [formGroup]="editUser" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label >Name</label>
+      <input type="text" class="form-control"  placeholder="Name" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  formControlName="email">
+    </div>
+    <select class="custom-select" formControlName="country_id">
+        <option [ngValue]="null" >select your country</option>
+        <option [ngValue]="country.id"  *ngFor="let country of countries">{{country.name_en}}</option>
+      </select>
+      <div class="form-group">
+        <label >Phone</label>
+        <input type="text" class="form-control"  placeholder="Phone" formControlName="phone">
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!editUser.valid">Submit</button>
+  </form>

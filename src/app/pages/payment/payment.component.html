@@ -1,0 +1,51 @@
+ <!-- Payments -->
+ <section class="payment">
+    <h6 class="bg-main-color px-3 text-white py-3 mb-4 text-uppercase rounded-pill"><i class="fas fa-star text-secondary-color"></i> select a payment method</h6>
+    <div class="payments-list">
+        <div class="row mb-4">
+            <div class="col-lg-4"  >
+                <div class=" payment-way bg-main-color p-4 text-center mb-4 cursor-pointer" routerLink="electronic">
+                    <img src="../../../assets/imgs/erwaa-٣٦.png" alt="" class="img-fluid img-fit">
+                   
+                    <h4 class="text-secondary-color text-uppercase mb-4">Electronic</h4>
+                    <div class="form-check">
+                        <!-- <label class="form-check-label" for="defaultCheck1">
+                        </label> -->
+                        <!-- <input class="form-check-input position-relative" type="checkbox" value="" id="defaultCheck1"> -->
+                      </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div class=" payment-way bg-main-color p-4 text-center mb-4 cursor-pointer" routerLink="cash">
+                    <img src="../../../assets/imgs/erwaa-٣٧.png" alt="" class="img-fluid img-fit">
+                   
+                    <h4 class="text-secondary-color text-uppercase mb-4">cash</h4>
+                    <div class="form-check">
+                        <!-- <label class="form-check-label" for="defaultCheck1">
+                        </label> -->
+                        <!-- <input class="form-check-input position-relative" type="checkbox" value="" id="defaultCheck1"> -->
+                      </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div class=" payment-way bg-main-color p-4 text-center mb-4 cursor-pointer" routerLink="bank">
+                    <img src="../../../assets/imgs/erwaa-٤٤.png" alt="" class="img-fluid img-fit">
+                   
+                    <h4 class="text-secondary-color text-uppercase mb-4">bank</h4>
+                    <div class="form-check">
+                        <!-- <label class="form-check-label" for="defaultCheck1">
+                        </label> -->
+                        <!-- <input class="form-check-input position-relative" type="checkbox" value="" id="defaultCheck1"> -->
+                      </div>
+                </div>
+                
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+        
+    </div>
+
+</section>
+<!-- ./Payments -->

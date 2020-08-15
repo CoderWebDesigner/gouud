@@ -1,0 +1,35 @@
+<div class="proctuct bg-white position-relative text-center"  >
+    <span
+        class="offer bg-secondary-color text-white position-absolute px-3" >- {{product.discount}}%</span>
+    <span class="favourite text-secondary-color  position-absolute" >
+        <i class="fas fa-heart" (click)="removeFavourite(product.id)" *ngIf="product.favourite ;else addToFavourite"></i>
+        <ng-template #addToFavourite><i class="far fa-heart" (click)="addFavourite(product.id)"></i></ng-template>
+
+        
+        </span>
+    <div class="product-img">
+        <img src="{{product.images[0].image}}" alt="{{product.name_en}}" class="img-fluid img-contain">
+    </div>
+    <rating [(ngModel)]="product.rate" [max]="5" [readonly]="true"></rating>
+
+    <div class="product-title">
+        <h6 class="text-truncate"><a routerLink="/details/{{product.id}}"  class='text-dark'>{{product.name_en}}</a></h6>
+    </div>
+    <div class="product-info overflow-hidden mb-2">
+        <span class="text-secondary-color font-weight-bold">{{product.price}} SAR </span>
+        <span
+            class="category rounded-pill px-2 d-inline-block float-right">{{categoryName}}</span>
+    </div>
+    <div *ngIf= "!product.inCart;else inCart">
+        <div class="add-cart bg-main-color text-white p-2"  (click)="addCart(product.id,1)">
+            <i class="fas fa-shopping-cart"></i> Add To Cart
+        </div>
+    </div>
+    <ng-template #inCart>
+        <div class="add-cart bg-main-color text-white p-2"  (click)="removeFromCart(product.id)">
+            <i class="fas fa-times"></i> Remove From  Cart
+        </div>
+
+    </ng-template>
+    
+</div> 

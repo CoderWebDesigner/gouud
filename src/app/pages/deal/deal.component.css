@@ -1,0 +1,17 @@
+.deals-product {
+    border: 2px solid #216786;
+    background: #216786;
+    border-radius: 20px;
+  }
+  .deals-product .product-img {
+    background: #fff;
+    border-radius: 20px;
+  }
+  .deals-product .product-img img {
+    border-radius: 20px;
+    height: 150px;
+  }
+  .deals-product .category {
+    border: 2px solid #5eaed5;
+    color: #5eaed5 !important;
+  }    

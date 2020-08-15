@@ -1,0 +1,22 @@
+<!-- best seller -->
+<section class="best-seller mb-4">
+    <div class="best-seller-products">
+        <div class="row" *ngIf="favouriteProducts.length > 0;else noFavourite">
+            <div class="col-lg-3 col-sm-6 mb-3" *ngFor="let favourite of favouriteProducts">
+               
+                <app-product [product]="favourite.product" [categoryName]="favourite.product.brand.department.name_en"  ></app-product>
+
+            </div>
+        </div>
+        <ng-template #noFavourite>
+            <div class="row">
+                <div class="card col-12">
+                    <div class="card-body text-center">
+                        <p class="mb-0 py-5">No Products In Favourite List</p>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</section>
+<!-- ./best seller -->

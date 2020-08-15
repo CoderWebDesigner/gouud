@@ -1,0 +1,40 @@
+<app-slider class="my-4"></app-slider>
+<!-- best seller -->
+<section class="best-seller mb-4 best-seller-allProducts my-4">
+    <h6 class="bg-main-color text-white px-4 py-2 rounded-pill text-uppercase overflow-hidden mb-4">
+        <span class="float-left">best seller</span> <a routerLink="../allbestseller"
+                                    class="btn rounded-pill float-right view-all text-secondary-color " >view all</a>
+    </h6>
+    <!-- Best Seller Products-->
+
+    <div class="best-seller-products">
+        <div class="row">
+            
+            <div class="col-lg-3 col-sm-6 mb-3 cursor-pointer" *ngFor="let product of allBestSeller;let i=index">
+                <app-product [product]="product" [categoryName]="categoryName" *ngIf="i<4"></app-product>
+            </div>
+        </div>
+    </div>
+    <!-- Best Seller Products-->
+</section>
+<!-- ./best seller -->
+
+<!-- Daily Deals -->
+<section class="daily-deals mb-4">
+    <h6 class="bg-main-color text-white px-4 py-2 rounded-pill text-uppercase overflow-hidden mb-4">
+        <span>Daily Deals</span> <a routerLink="../deals"
+                                    class="btn rounded-pill float-right view-all text-secondary-color">view all</a>
+    </h6>
+    <div class="daily-deals-products">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-3 cursor-pointer"  *ngFor="let deal of deals;let i=index">
+                
+                <app-deal [deal]='deal'  *ngIf="i<3" routerLink="../brand/{{deal.brand.id}}"></app-deal>
+            </div>
+           
+
+        </div>
+    </div>
+</section>
+<!-- ./Daily Deals -->
+<router-outlet></router-outlet>

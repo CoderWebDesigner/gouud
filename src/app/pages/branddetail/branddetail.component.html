@@ -1,0 +1,20 @@
+<!-- best seller -->
+<section class="best-seller mb-4 best-seller-allProducts my-4">
+    <h6 class="bg-main-color text-white px-4 py-3 rounded-pill text-uppercase overflow-hidden mb-4">
+        <span class="float-left">{{brandName}}</span> 
+    </h6>
+    <!-- Best Seller Products-->
+
+    <div class="best-seller-products">
+        <div class="row">
+            
+            
+            <div class="col-lg-3 col-sm-6 mb-3" *ngFor="let product of brands" >
+                <app-product [product]="product" [categoryName]="product.brand.department.name_en"></app-product>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Best Seller Products-->
+</section>
+<!-- ./best seller -->

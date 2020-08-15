@@ -1,0 +1,14 @@
+.categorie-list a {
+    background: #2c84a5;
+    padding: 14px 1.5rem !important;
+  }
+  .categorie-list a img {
+    width: 30px;
+  }
+
+  .categorie-list a:hover {
+    background: #216786;
+  }
+  .categorie-list a.selected{
+    background: #216786 !important;
+  }

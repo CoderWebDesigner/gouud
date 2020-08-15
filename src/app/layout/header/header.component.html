@@ -1,0 +1,173 @@
+
+ <!-- Header -->
+ <header>
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg navbar-light ">
+                        <h3 class="my-auto">
+                            <a class="navbar-brand" href="#">
+                                <img src="assets/imgs/logo.png" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </h3>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="toggleCollapsed()"
+                                data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse w-100 flex-md-column pt-5 pb-2" id="navbarCollapse" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+                            <ul class="navbar-nav ml-auto mb-2 mb-md-0">
+                                <li class="nav-item active">
+                                    <a class="nav-link py-1 px-3 border-right" routerLink="/">
+                                        <i class="fas fa-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 px-3 border-right text-secondary-color" routerLink="account">
+                                        <i class="far fa-user"></i>
+                                        Account
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 px-3 border-right text-secondary-color" routerLink="deals">
+                                        <i class="fas fa-gift mx-lg-2 mr-1"></i>Offer
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 px-3 border-right text-secondary-color" routerLink="favourite">
+                                        <i class="far fa-heart"></i>
+                                        Favourite
+                                    </a>
+                                </li>
+                                <li class="nav-item border-right py-1 px-3 ">
+                                    <select name="" id="langSelect" class="border-0 bg-transparent text-white">
+                                        <!-- <option *ngFor="let lang of translate.getLangs()" value="lang"></option> -->
+                                        <option value="en">English</option>
+                                        <option value="ar">عربي</option>
+                                    </select>
+
+                                </li>
+                                <li class="nav-item  border-right py-1 px-3 ">
+                                    <select name="" id="" class=" border-0">
+                                        <option value="1" selected><a class="nav-link " href="#">USD</a></option>
+                                        <option value="2"><a class="nav-link " href="#">USD</a></option>
+                                    </select>
+
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link btn  px-4 ml-2  text-white py-1" routerLink="auth/login" *ngIf="authService.isLogin() " (click)="logout()"><i class="fas fa-sign-out-alt"></i> logout </a>
+
+                                    <a *ngIf="!authService.isLogin()" class="nav-link border-right sign-in btn border rounded-pill px-4 ml-2 border-white text-white py-1"
+                                        routerLink="auth/login" >Sign In</a>
+                                </li>
+                            </ul>
+                            <div class=" ml-auto mt-4 header-bottom">
+                                <div class="form-inline d-inline-block search mb-3 position-relative" >
+                                    <div class="input-group border rounded-pill pl-3 bg-white">
+                                        <input type="text" class="form-control border-0 "
+                                               placeholder="Search In Web Now" #searchInput (blur)="resetSearch()">
+                                        <div class="input-group-append">
+                                            <button class="btn text-white border-0 secondary-btn" (click)="search(searchInput.value)">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="search-result bg-primary-color p-3"  *ngIf="searchedProducts.length>0">
+                                        <ul class="list-style-none bg-primary-color p-3">
+                                            <li class="py-2 font-weight-bold cursor-pointer found"  (click)="resetSearch()" *ngFor="let product of searchedProducts" routerLink="/details/{{product.id}}">{{product.name_en}}</li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div> 
+                                <div class="cart d-inline-block border border-white py-2 px-3 text-white ml-xl-3">
+                                    <p class="mb-0 cursor-pointer" routerLink="cart">
+                                        <i class="fas fa-shopping-cart mx-1"></i> <span class="number">{{productInCartCount}}</span> <span class="sum" *ngIf="authService.isLogin()">Cart = {{totalProductInCartPrice}}</span>
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-header ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="dropdown mx-1">
+                        <a class="btn bg-sub-secondary-color text-white dropdown-toggle rounded-0 px-5 py-2 sections">
+                            <i class="fas fa-bars pr-4"></i> Sections
+                        </a>
+                        <div class="dropdown-menu border-0 text-center categories d-lg-none d-block "  aria-labelledby="dropdownMenuLink">
+                            <a  routerLink="home/{{category.id}}" routerLinkActive="selected" class="dropdown-item px-4 mb-1 py-2  text-white text-uppercase d-inline-block" *ngFor="let category of categories;let i=index" > 
+                                <img src="{{category.image}}" alt="{{category.name_en}}" class="img-fluid">{{category.name_en}}
+                            </a>
+                        </div>
+                        
+                        <!-- <app-categories  class="dropdown-menu border-0 text-center categories" aria-labelledby="dropdownMenuLink"></app-categories> -->
+                    </div>
+
+                    <div class="dropdown mx-1">
+                        <a class="btn bg-transparent text-white dropdown-toggle rounded-0 px-5 py-2" (click)="openModal(template)" >
+                            <i class="fas fa-map-marker-alt"></i> Choose Your location
+                        </a>
+
+                        <div class="dropdown-menu border-0" aria-labelledby="dropdownMenuLink">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ./Header -->
+
+<!-- Modal -->
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Enter address</label>
+            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+          </div>
+
+          <!-- <agm-map 
+          [latitude]="latitude"
+          [longitude]="longitude"
+          [zoom]="zoom"
+          [disableDefaultUI]="false"
+          [zoomControl]="false"
+          (mapClick)="mapClicked($event)">
+        
+          <agm-marker 
+              
+              [latitude]="latitude"
+              [longitude]="longitude"
+              
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)">
+              
+            <agm-info-window>
+              <strong>InfoWindow content</strong>
+            </agm-info-window>
+            
+          </agm-marker>
+          
+        
+        </agm-map> -->
+    </div>
+  </ng-template>
+<!-- ./Modal -->
+

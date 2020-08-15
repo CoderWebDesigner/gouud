@@ -1,0 +1,84 @@
+<section class="address">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-12 mx-auto">
+        <form  [formGroup]="orderInfo" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="firstname">firstname</label>
+                        <input type="text" class="form-control" id="firstname" formControlName="first_name">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="lastname">lastname</label>
+                        <input type="text" class="form-control" id="lastname" formControlName="last_name">
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="form-group">
+                <label class="text-uppercase" for="mobile">mobile</label>
+                <input type="text" class="form-control" id="mobile" formControlName="mobile">
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="country">Country</label>
+                        <input type="text" class="form-control" id="country" formControlName="country">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="government">Government</label>
+                        <input type="text" class="form-control" id="government" formControlName="governorate">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="city">City</label>
+                        <input type="text" class="form-control" id="city" formControlName="city">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="street">Street name and number</label>
+                        <input type="text" class="form-control" id="street" formControlName="street_name">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="building">Building name and number</label>
+                        <input type="text" class="form-control" id="building" formControlName="building_name">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="floor">floor</label>
+                        <input type="text" class="form-control" id="floor" formControlName="floor">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="text-uppercase" for="flat">flat</label>
+                        <input type="text" class="form-control" id="flat" formControlName="flat">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-none">
+               
+                <input type="text" class="form-control" formControlName="order_id">
+            </div>
+            <button type="submit" class="bg-main-color text-secondary-color px-5 py-2 border-0 font-weight-bold text-uppercase" [disabled]="!orderInfo.valid">select payment method</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

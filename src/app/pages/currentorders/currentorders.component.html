@@ -1,0 +1,40 @@
+<div *ngIf="currentOrders">
+
+    <div class="requests-list" *ngIf="currentOrders?.length>0;else noProducts">
+        <div class="request bg-white pt-3 mb-4" *ngFor="let order of currentOrders" >
+            <div class="request-id px-3">
+                <p class="text-main-color font-weight-bold"># {{order.id}}</p>
+            </div>
+            <div class="request-details px-3 overflow-hidden">
+                <div class="font-weight-bold"> order details 
+                    <ul class="float-right font-weight-bold text-main-color text-uppercase list-style-none ">
+                        <li  *ngFor="let product of order.order_details">  {{product.quantity}} {{ product.product.name_en}}</li>
+                    </ul>
+                   
+                </div>
+            </div>
+            <div class="request-date px-3">
+                <div class="font-weight-bold"> order date <span class="float-right font-weight-bold text-main-color">{{order.updated_at}}</span></div>
+            </div>
+            <div class="request-status px-3">
+                <div class="font-weight-bold"> 
+                    <p>order status <span class="float-right font-weight-bold text-main-color text-uppercase">{{order.state}}</span></p>
+                </div>
+            </div>
+            <div class="cancel-request p-3 bg-main-color text-white">
+                <div class="font-weight-bold"> 
+                    <p class="mb-0 overflow-hidden"><button class="float-right py-1 px-3 bg-transparent text-secondary-color rounded-pill text-uppercase cancel-request-btn" (click)="cancelOrder(order.id)">Cancel Request</button></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<ng-template #noProducts>
+    <div class="card">
+        <div class="card-body">
+            <p class="text-center mb-0 py-5">There is no orders</p>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,109 @@
+.favourite{
+    top: 50px;
+    right: 50px;
+    font-size: 30px;
+}
+
+
+ .product-details .product-details-img {
+    border-radius: 60px;
+  }
+  
+   .product-details .product-details-img img {
+    width: 280px;
+    height: 400px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  
+   .product-details-offer {
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    border-top-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+  
+   .product-details .slider-nav img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 auto;
+  }
+  
+   .product-details .slider-nav .slick-current img {
+    border: 4px solid #216786;
+  }
+  
+   .product-details .sp-quantity {
+    width: 124px;
+    height: 42px;
+    border-radius: 60px;
+  }
+  
+   .product-details .sp-quantity .fff {
+    border: 2px solid #216786;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #216786;
+  }
+  
+   .product-details .sp-minus {
+    width: 30px;
+    height: 30px;
+    float: left;
+    text-align: center;
+  }
+  
+   .product-details .sp-minus a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    text-decoration: none;
+    line-height: 27px;
+    font-size: 19px;
+  }
+  
+   .product-details .sp-input {
+    width: 40px;
+    height: 30px;
+    border-left: 0px solid black;
+    float: left;
+    line-height: 30px;
+  }
+  
+   .product-details .sp-input input {
+    width: 38px;
+    height: 34px;
+    text-align: center;
+    border: none;
+  }
+  
+   .product-details .sp-input input:focus {
+    border: none;
+  }
+  
+   .product-details .sp-plus {
+    width: 30px;
+    height: 30px;
+    float: left;
+    text-align: center;
+  }
+  
+   .product-details .sp-plus a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    text-decoration: none;
+    line-height: 27px;
+    font-size: 19px;
+  }
+  
+   .product-details .user-rate-info {
+    border-radius: 20px;
+  }

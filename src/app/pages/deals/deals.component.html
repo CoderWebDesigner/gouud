@@ -1,0 +1,17 @@
+<!-- Daily Deals -->
+<section class="daily-deals mb-4">
+    <h6 class="bg-main-color text-white px-4 py-3 rounded-pill text-uppercase overflow-hidden mb-4">
+        <span>Daily Deals</span> 
+    </h6>
+    <div class="daily-deals-products">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-3"  *ngFor="let deal of deals;let i=index">
+                
+                <app-deal [deal]='deal' class="cursor-pointer" routerLink="../brand/{{deal.brand.id}}"></app-deal>
+            </div>
+           
+
+        </div>
+    </div>
+</section>
+<!-- ./Daily Deals -->

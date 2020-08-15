@@ -1,0 +1,13 @@
+ .request {
+    border: 1px solid #216786 !important;
+    border-radius: 20px;
+  }
+  
+   .request .cancel-request {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+   .request .cancel-request-btn {
+    border: 1px solid #3bafd5 !important;
+  }

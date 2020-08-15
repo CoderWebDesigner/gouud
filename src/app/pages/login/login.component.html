@@ -1,0 +1,48 @@
+<!-- Sign In -->
+<div class="sign-in bg-main-color p-5">
+    <h3 class="text-uppercase text-white">let's get started</h3>
+    <p class="text-uppercase text-white">create an account to future</p>
+    <form class="my-4 sign-in-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group bg-white rounded-pill">
+            <div class="input-group mb-3 border-o rounded-pill">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text bg-white rounded-pill border-0 text-secondary  "><i class="far fa-user"></i></span>
+                </div>
+                <input type="email" class="form-control border-0 rounded-pill " formControlName="email" placeholder="Enter mobile number or email">
+            </div>
+
+        </div>
+
+        <div class="form-group bg-white rounded-pill">
+            <div class="input-group mb-3 border-o ">
+                <div class="input-group-prepend  ">
+                    <span class="input-group-text bg-white rounded-pill border-0 text-secondary "><i class="fas fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control border-0 rounded-0" placeholder="password" #ShowHideInput formControlName="password">
+                <div class="input-group-append">
+                    <span class="input-group-text bg-white rounded-pill border-0 text-secondary "(click)="togglePassword()">
+                        <i class="fas fa-eye-slash"  *ngIf="visiblePassword;else  elseHidden"></i>
+                        
+                        <ng-template #elseHidden><i class="far fa-eye"></i></ng-template>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center">
+
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary bg-secondary-color text-white rounded-pill px-5 text-uppercase">sign in</button>
+        </div>
+
+    </form>
+    <p class="text-center text-uppercase text-white">sign in with</p>
+    <div class="social-media-icons text-center">
+
+        <ul class="list-style-none mb-0 p-0">
+            <li class="d-inline-block bg-white"><span class="d-inline-block bg-primary shadow-sm"> <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></span> </li>
+            <li class="d-inline-block bg-white"><span class="d-inline-block shadow-sm bg-secondary-color"> <a href="#" class="text-white"><i class="fab fa-twitter"></i></a> </span></li>
+            <li class="d-inline-block bg-white"><span class="d-inline-block shadow-sm bg-danger"> <a href="#" class="text-white"><i class="fab fa-google"></i></a></span></li>
+        </ul>
+    </div>
+</div>
+<!-- ./Sign In -->

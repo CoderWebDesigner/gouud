@@ -1,0 +1,146 @@
+<!-- Product -->
+<div class="product-details " *ngIf="product">
+  <!-- Big Slider -->
+  <div class="product-details-img  bg-white text-center position-relative mb-5">
+    <span class="product-details-offer bg-secondary-color text-white position-absolute px-3">{{product?.discount}}%</span>
+    
+    <ngx-slick-carousel class="carousel slider-for" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let slide of product?.images" class="slide">
+        <span class="favourite text-secondary-color  position-absolute" >
+          <i class="fas fa-heart" (click)="removeFavourite(product.id)" *ngIf="product.favourite ;else addToFavourite"></i>
+          <ng-template #addToFavourite><i class="far fa-heart" (click)="addFavourite(product.id)"></i></ng-template>
+        </span>
+        <img src="{{ slide.image }}" alt="" width="100%">
+      </div>
+    </ngx-slick-carousel>
+  </div>
+
+  <!-- ./Big Slider -->
+  <!-- Small Slider -->
+  <ngx-slick-carousel class="carousel slider-nav" #slickModal="slick-carousel" [config]="slideThumbs">
+    <div ngxSlickItem *ngFor="let slide of product?.images" class="slide">
+      <img src="{{ slide.image }}" alt="" class="img-contian">
+    </div>
+  </ngx-slick-carousel>
+
+  <!-- Small Slider -->
+
+  <h4 class="text-uppercase mb-3">{{product?.name_en}}
+
+  </h4>
+  <p class="text-main-color">{{product?.descritpion_en}}</p>
+  <div class="price-amount mb-4">
+    <div class="price rounded-pill bg-white text-center py-1 px-5 d-inline-block">
+      <del class="text-secondary">{{product?.price}} sar</del>
+      <h5>{{product?.price - (product?.price * (product?.discount/100))}} sar</h5>
+    </div>
+    <div class="amount rounded-pill bg-white text-center  d-inline-block float-right">
+      <div class="sp-quantity counter d-inline-block float-right py-1 px-2">
+        <div class="sp-minus fff "> <a class="ddd minus text-main-color" (click)="decrease()">-</a>
+        </div>
+        <div class="sp-input">
+          <input type="text" class="quntity-input text-secondary-color bg-transparent" disabled [(ngModel)]="counter"  min="1" max="50">
+        </div>
+        <div class="sp-plus fff "> <a class="ddd plus text-main-color" (click)="increase()">+</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf= "!product.inCart;else inCart">
+    <button class="add-cart bg-main-color text-white p-2 border-0 mb-4"  (click)="addCart(product.id,counter)">
+        <i class="fas fa-shopping-cart"></i> Add To Cart
+    </button>
+</div>
+<ng-template #inCart>
+    <button class="add-cart bg-main-color text-white p-2 border-0 mb-4"  (click)="removeFromCart(product.id)">
+        <i class="fas fa-times"></i> Remove From  Cart
+    </button>
+
+</ng-template>
+  <div class="add-location overflow-hidden bg-white p-4 font-weight-bold text-uppercase mb-4">
+    <span>Add Location</span>
+    <span class="text-main-color float-right">Cairo-Egypt <i class="fas fa-map-marker-alt"></i></span>
+  </div>
+  <div class="category-rate overflow-hidden bg-white p-4 font-weight-bold text-uppercase mb-4">
+    <span class="category rounded-pill px-4 py-1 d-inline-block ">{{product?.brand.department.name_en}}</span>
+    <rating class="float-right" [(ngModel)]="product.rate" [max]="5" [readonly]="true"></rating>
+  </div>
+  <div class="rate mb-4">
+    <h6 class="bg-main-color px-3 text-white py-3 mb-4 text-uppercase rounded-pill " ><i
+        class="fas fa-star text-warning "></i> Ratings</h6>
+    <div class="bg-main-color user-rate-info p-3 mb-4" *ngFor="let comment of product?.comments" >
+      <div class="row" >
+        <div class="col-md-2 col-4">
+          <img src="{{comment.user.image}}" alt="" class="img-fluid img-contain">
+        </div>
+        <div class="col-md-10 col-8">
+          <h5 class="text-white text-uppercase">{{comment.user.name}}</h5>
+          <div class="user-rate">
+            <rating [(ngModel)]="comment.rate" [max]="5" [readonly]="true"></rating>
+          </div>
+          <div class="user-info">
+            <p class="text-secondary-color">{{comment.text}}</p>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="add-rate-section" *ngIf="this.authService.isLogin();else notAuthed">
+      <div class="card">
+        <div class="card-body" >
+          <div *ngIf="!product.comments.length">
+
+            <p class="text-capitalize text-muted text-center py-4" >No comments Found Be First one </p>
+            <hr class="w-50">
+          </div>
+          <div class=" overflow-hidden">
+            <rating class="float-right" [(ngModel)]="rate" [max]="5"></rating>
+            
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Comment</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="comment"></textarea>
+            </div>
+            <button class="btn add-rate bg-main-color text-white py-1 px-4 mb-4" (click)="addComment(product.id)" [disabled]="(comment ==undefined || comment =='')? true: false ">
+              Send
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <ng-template #notAuthed>
+      <div class="card">
+        <div class="card-body" >
+          <p class="text-capitalize mb-0 text-center" >you must login to add your feedback <u><a class="text-"routerLink="../auth/login">Login</a></u></p>
+          
+        </div>
+      </div>
+    </ng-template>
+    
+  </div>
+<!-- best seller -->
+<section class="best-seller mb-4 best-seller-allProducts my-4">
+  <h6 class="bg-main-color text-white px-4 py-2 rounded-pill text-uppercase overflow-hidden mb-4">
+      <span class="float-left">best seller</span> <a routerLink="../allbestseller"
+                                  class="btn rounded-pill float-right view-all text-secondary-color " >view all</a>
+  </h6>
+  <!-- Best Seller Products-->
+
+  <div class="best-seller-products">
+      <div class="row">
+          
+          <div class="col-lg-3 col-sm-6 mb-3" *ngFor="let product of allBestSeller;let i=index">
+              <app-product [product]="product" [categoryName]="categoryName" *ngIf="i<4"></app-product>
+          </div>
+      </div>
+  </div>
+  <!-- Best Seller Products-->
+</section>
+<!-- ./best seller -->
+ 
+</div>
+<!-- ./Product -->
